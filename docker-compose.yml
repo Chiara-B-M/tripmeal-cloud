@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  web:
+    build: web
+    image:  cbmalbertschool/tripmeal-picture-generation-web:1.0
+    networks:
+      - backend
+    ports:
+      - 5000
+  db:
+    build: db
+    image:  cbmalbertschool/tripmeal-picture-generation-db:1.0
+    networks:
+      - backend
+    volumes:
+      - tripmeal-data:/var/lib/mysqld/data
+
+networks:
+  backend:
+
+volumes:
+  tripmeal-data:
